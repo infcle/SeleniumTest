@@ -1,10 +1,13 @@
 package proyecto.junit;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class PruebasJUnit {
+public class PruebasJUnitTest {
 
     @BeforeAll
     static void setup() {
@@ -17,12 +20,12 @@ public class PruebasJUnit {
     }
 
     @Test
-    public void AdditionTest(){
+    public void AdditionTest() {
         System.out.println("test 1");
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         System.out.println("test 2");
     }
 

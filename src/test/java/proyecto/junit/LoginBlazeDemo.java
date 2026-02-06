@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * @version 1.0
  * @since 06/02/2026
  */
-public class LoginBlazeDemo {
+public class LoginBlazeDemoTest {
 
     private String url = "https://www.demoblaze.com/index.html";
 

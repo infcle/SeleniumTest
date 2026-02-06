@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  *
  */
-public class LoginSauceDemo {
+public class LoginSauceDemoTest {
 
     @Test
     public void loginSauceDemo() throws InterruptedException {
