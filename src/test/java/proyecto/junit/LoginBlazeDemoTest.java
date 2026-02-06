@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class LoginBlazeDemoTest {
 
-    private String url = "https://www.demoblaze.com/index.html";
+    private final String url = "https://www.demoblaze.com/index.html";
 
     @Test
     public void loginTest() throws InterruptedException {
