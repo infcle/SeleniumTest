@@ -1,4 +1,4 @@
-package proyecto.junit;
+package proyecto.testng;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
