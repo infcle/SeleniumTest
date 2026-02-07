@@ -2,7 +2,6 @@ package proyecto.junit;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 /**
  * Proyecto: SeleniumTest Nombre del archivo: LoginBlaze Descripción: [Añade una breve descripción
