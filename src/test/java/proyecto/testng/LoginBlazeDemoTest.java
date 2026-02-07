@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -21,8 +22,6 @@ import org.testng.annotations.Test;
  */
 public class LoginBlazeDemoTest {
 
-    private final String url = "https://www.demoblaze.com/index.html";
-
     @Test
     public void loginTest() throws InterruptedException {
         WebDriverManager.chromedriver()
@@ -31,6 +30,7 @@ public class LoginBlazeDemoTest {
         WebDriver driver = new ChromeDriver();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        String url = "https://www.demoblaze.com/index.html";
         driver.get(url);
         driver.manage()
             .window()
@@ -55,8 +55,14 @@ public class LoginBlazeDemoTest {
 
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
         Thread.sleep(1000);
+        String message = alert.getText();
         alert.accept();
 
+        Assert.assertTrue(
+            message.equals("Sign Up Successfully") ||
+                message.equals("This user already exist."),
+            "Mensaje inesperado en la alerta: " + message
+        );
         Thread.sleep(1000);
         driver.close();
     }

@@ -17,7 +17,7 @@ public class Laboratorio1Test {
 
         WebDriver driver = new FirefoxDriver(options);
 
-        driver.get(" https://www.toolsqa.com/");
+        driver.get("https://www.toolsqa.com/");
 
         driver.manage()
             .window()
