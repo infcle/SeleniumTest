@@ -59,5 +59,5 @@ allure serve target/allure-results
 
 ## Notas
 
-- WebDriverManager descarga y configura los drivers automaticamente.
+- WebDriverManager descarga y configura los drivers automáticamente.
 - Algunas pruebas usan `Thread.sleep`, por lo que pueden tardar mas.
