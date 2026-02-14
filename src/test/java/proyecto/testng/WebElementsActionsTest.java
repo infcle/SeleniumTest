@@ -47,6 +47,12 @@ public class WebElementsActionsTest {
     By displayedTextBox = By.id("displayed-text");
     By openWindowButton = By.id("openwindow");
     By openTabButton = By.id("opentab");
+    By tableHeaders = By.cssSelector(".table-display th");
+    By tableRows = By.cssSelector(".table-display tbody tr");
+    By rahulRow = By.xpath("//table[contains(@class,'table-display')]//td[text()='Rahul Shetty']");
+    By fixedTableHeaders = By.cssSelector("#product th");
+    By fixedTableAmountCells = By.cssSelector("#product tbody tr td:nth-child(4)");
+    By fixedTableTotalAmount = By.cssSelector(".totalAmount");
 
     @BeforeMethod
     public void setUp() {
@@ -238,6 +244,54 @@ public class WebElementsActionsTest {
         driver.switchTo()
             .window(mainTab);
         Assert.assertEquals(driver.getCurrentUrl(), mainUrl, "Debe regresar al tab principal");
+    }
+
+    @Test
+    public void webTableTest() {
+        List<WebElement> headers = wait.until(
+            ExpectedConditions.visibilityOfAllElementsLocatedBy(tableHeaders));
+        List<WebElement> rows = wait.until(
+            ExpectedConditions.visibilityOfAllElementsLocatedBy(tableRows));
+
+        Assert.assertEquals(headers.size(), 3, "La tabla debe tener 3 columnas");
+        Assert.assertTrue(rows.size() > 0, "La tabla debe tener al menos una fila");
+        Assert.assertTrue(
+            driver.findElement(rahulRow)
+                .isDisplayed(), "No se encontro la fila de Rahul Shetty"
+        );
+    }
+
+    @Test
+    public void fixedHeaderTableTest() {
+        List<WebElement> headers = wait.until(
+            ExpectedConditions.visibilityOfAllElementsLocatedBy(fixedTableHeaders));
+        List<WebElement> amounts = wait.until(
+            ExpectedConditions.visibilityOfAllElementsLocatedBy(fixedTableAmountCells));
+
+        List<String> headerTexts = new ArrayList<>();
+        for (WebElement header : headers) {
+            headerTexts.add(header.getText()
+                .trim());
+        }
+
+        Assert.assertTrue(headerTexts.contains("Name"), "Debe existir la columna Name");
+        Assert.assertTrue(headerTexts.contains("Position"), "Debe existir la columna Position");
+        Assert.assertTrue(headerTexts.contains("City"), "Debe existir la columna City");
+        Assert.assertTrue(headerTexts.contains("Amount"), "Debe existir la columna Amount");
+        Assert.assertTrue(amounts.size() > 0, "La tabla fija debe tener filas de datos");
+
+        int calculatedTotal = 0;
+        for (WebElement amount : amounts) {
+            calculatedTotal += Integer.parseInt(amount.getText()
+                .trim());
+        }
+
+        String totalText = driver.findElement(fixedTableTotalAmount)
+            .getText();
+        int uiTotal = Integer.parseInt(totalText.replaceAll("[^0-9]", ""));
+
+        Assert.assertEquals(
+            calculatedTotal, uiTotal, "La suma de Amount no coincide con el total mostrado");
     }
 
 
