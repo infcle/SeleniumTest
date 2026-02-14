@@ -107,7 +107,7 @@ public class WebElementsActionsTest {
     }
 
     @Test
-    public void alertTest() throws InterruptedException {
+    public void alertTest() {
         WebElement input = driver.findElement(inputName);
         WebElement alertNameButton = driver.findElement(alertButton);
 
