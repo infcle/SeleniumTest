@@ -52,9 +52,6 @@ public class DemoQaPracticeFormTest {
 
     @Test
     public void submitPracticeFormTest() {
-        ((JavascriptExecutor) driver).executeScript(
-            "document.querySelector('footer')?.remove(); document.getElementById('fixedban')?.remove();");
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameInput))
             .sendKeys("Elmer");
         driver.findElement(lastNameInput)
