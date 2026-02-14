@@ -3,6 +3,7 @@ package proyecto.testng;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -160,7 +161,7 @@ public class WebElementsActionsTest {
 
         wait.until(ExpectedConditions.urlContains("#top"));
         Assert.assertTrue(
-            driver.getCurrentUrl()
+            Objects.requireNonNull(driver.getCurrentUrl())
                 .contains("#top"), "The url doesn't change"
         );
 
