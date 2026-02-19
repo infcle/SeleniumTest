@@ -33,10 +33,38 @@ Ejecutar todos los tests:
 mvn test
 ```
 
+Ejecutar todos los tests en Chrome:
+
+```bash
+mvn -Dbrowser=chrome test
+```
+
+Ejecutar todos los tests en Firefox:
+
+```bash
+mvn -Dbrowser=firefox test
+```
+
+Ejecutar todos los tests en Edge:
+
+```bash
+mvn -Dbrowser=edge test
+```
+
 Ejecutar un test especifico:
 
 ```bash
 mvn -Dtest=LoginSauceDemoTest test
+```
+
+Ejecutar un test especifico en otro navegador:
+
+```bash
+mvn -Dtest=LoginSauceDemoTest -Dbrowser=firefox test
+```
+
+```bash
+mvn -Dtest=LoginSauceDemoTest -Dbrowser=edge test
 ```
 
 Ejecutar un metodo especifico:
