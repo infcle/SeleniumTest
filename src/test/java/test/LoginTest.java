@@ -66,13 +66,17 @@ public class LoginTest extends BaseTest {
             "Checkout: Your Information",
             "Title is not equal to Checkout: Your Information"
         );
-        checkoutPage.fillCheckoutInformation("Elmer", "Coronel", "10101");
-        checkoutPage.clickContinue();
-        checkoutPage.waitForCheckoutOverviewPage();
+        checkoutPage.fillInformationAndContinue("Elmer", "Coronel", "10101");
         Assert.assertEquals(
             checkoutPage.getTitle(),
             "Checkout: Overview",
             "Title is not equal to Checkout: Overview"
+        );
+        ProductData productInCheckoutOverview = checkoutPage.getProductDataByName(productName);
+        Assert.assertEquals(
+            productInCheckoutOverview,
+            expectedProduct,
+            "Product data in checkout overview does not match inventory"
         );
 
     }

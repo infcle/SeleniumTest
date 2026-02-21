@@ -3,6 +3,9 @@ package pages;
 import base.BasePage;
 import model.ProductData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Proyecto: SeleniumTest Nombre del archivo: CardPage Descripción: [Añade una breve descripción
@@ -36,6 +39,9 @@ public class CartPage extends BasePage {
     }
 
     public void clickCheckout() {
-        clickElement(checkoutButton);
+        WebElement checkoutBtn = wait.until(
+            ExpectedConditions.visibilityOfElementLocated(checkoutButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", checkoutBtn);
+        wait.until(ExpectedConditions.urlContains("checkout-step-one"));
     }
 }
